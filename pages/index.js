@@ -1,6 +1,7 @@
 import Head from "next/head";
 import CreateGame from "../components/CreateGame";
 import Newgame from "./game";
+import styled from "styled-components";
 
 export default function Home() {
   return (
@@ -12,9 +13,18 @@ export default function Home() {
       </Head>
 
       <main>
+        <FlexFrame>
         <CreateGame />
-        <Newgame />
+        </FlexFrame>
       </main>
     </div>
   );
 }
+
+const FlexFrame = styled.div `
+display:flex;
+flex-direction:column;
+align-items:center;
+
+`
+

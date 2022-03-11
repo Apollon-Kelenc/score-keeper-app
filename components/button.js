@@ -1,12 +1,14 @@
 import styled from "styled-components";
 
-export function Button({ description }) {
-  return <FancyButton>{description}</FancyButton>;
+export function Button({ description, color}) {
+  return <FancyButton color={color}>{description}</FancyButton>;
 }
 
 const FancyButton = styled.button`
   height: 4rem;
-  margin: 1rem 0;
+  min-width:4rem;
+  margin: 1rem;
+
   width: auto;
   padding: 1rem;
   background: rgb(165, 15, 216);

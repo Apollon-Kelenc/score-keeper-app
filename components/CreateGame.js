@@ -25,14 +25,19 @@ export default function CreateGame() {
           value=""
           onChange={() => {}}
         />
-        <Button description="Play" />
         <Button description="Create game score" />
-        <Button description="Game History" />
+        
       </form>
+      <Button description="Game History"/>
+      <Button description="Play" />
     </CreateGameWrapper>
   );
 }
 
 const CreateGameWrapper = styled.section`
-  margin: 2rem;
+padding:2rem;
+  width:700px;
+  border:2px solid grey;
+  margin-top:2rem;
+  border-radius:1rem;
 `;
