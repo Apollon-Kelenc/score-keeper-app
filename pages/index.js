@@ -1,5 +1,6 @@
 import Head from "next/head";
 import CreateGame from "../components/CreateGame";
+import Newgame from "./game";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
 
       <main>
         <CreateGame />
+        <Newgame />
       </main>
     </div>
   );

@@ -25,6 +25,7 @@ export default function CreateGame() {
           value=""
           onChange={() => {}}
         />
+        <Button description="Play" />
         <Button description="Create game score" />
         <Button description="Game History" />
       </form>
