@@ -2,6 +2,7 @@ import { Button } from "./Button";
 import Input from "./Input";
 import styled from "styled-components";
 import { useState } from "react";
+import Link from "next/link";
 
 const defaultData = {
   gameName: "",
@@ -18,7 +19,12 @@ export default function CreateGame({ onCreateGame }) {
       gameName: event.target.elements.gameName.value,
       gamePlayers: event.target.elements.gamePlayers.value
         .split(",")
-        .map((name) => name.trim()),
+        .map((pname) => {
+          return {
+            name: pname.trim(),
+            score: 0,
+          };
+        }),
     });
     setNewData(defaultData);
   }
@@ -53,6 +59,9 @@ export default function CreateGame({ onCreateGame }) {
       </form>
       <Button description="Game History" />
       <Button description="Play" />
+      <Link href="/games/test">
+        <a>test</a>
+      </Link>
     </CreateGameWrapper>
   );
 }

@@ -34,5 +34,5 @@ const InputStyled = styled.input`
 `;
 
 const InputLabel = styled.label`
-  font-size: 3rem;
+  font-size: 2rem;
 `;
