@@ -8,8 +8,26 @@ const defaultData = {
   gamePlayers: "",
 };
 
-export default function CreateGame() {
+export default function CreateGame({ onCreateGame }) {
   const [newData, setNewData] = useState(defaultData);
+
+  function handleSubmit(event) {
+    event.preventDefault();
+
+    onCreateGame({
+      gameName: event.target.elements.gameName.value,
+      gamePlayers: event.target.elements.gamePlayers.value
+        .split(",")
+        .map((name) => name.trim()),
+    });
+    setNewData(defaultData);
+  }
+
+  function handleChange(event) {
+    const { name, value } = event.target;
+    setNewData({ ...newData, [name]: value });
+  }
+
   return (
     <CreateGameWrapper>
       <form autoComplete="off" onSubmit={handleSubmit}>
@@ -19,7 +37,7 @@ export default function CreateGame() {
           name="gameName"
           placeholder="insert the name of the Game"
           type="text"
-          value={gameName}
+          value={newData.gameName}
           onChange={handleChange}
         />
         <Input
@@ -28,7 +46,7 @@ export default function CreateGame() {
           name="gamePlayers"
           placeholder="e.g. Player 1, Player 2"
           type="text"
-          value={gamePlayers}
+          value={newData.gamePlayers}
           onChange={handleChange}
         />
         <Button description="Create game score" />
@@ -37,20 +55,6 @@ export default function CreateGame() {
       <Button description="Play" />
     </CreateGameWrapper>
   );
-}
-
-function handleSubmit(event) {
-  event.preventDefault();
-  onCreateGame({
-    gameName: newData.gameName,
-    gamePlayers: newData.gamePlayers.split(",").map((name) => name.trim()),
-  });
-  setNewData(defaultData);
-}
-
-function handleChange(event) {
-  const { name, value } = event.target;
-  setNewData({ ...newData, [name]: value });
 }
 
 const CreateGameWrapper = styled.section`

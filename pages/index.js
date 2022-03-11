@@ -2,10 +2,13 @@ import Head from "next/head";
 import CreateGame from "../components/CreateGame";
 import Newgame from "./game";
 import styled from "styled-components";
-import { useState } from "react/cjs/react.production.min";
+import { useState } from "react";
+import { nanoid } from "nanoid";
 
 export default function Home() {
   const [players, setPlayers] = useState([]);
+  const [gameName, setGameName] = useState("");
+  console.log(players);
   return (
     <div>
       <Head>
@@ -16,11 +19,18 @@ export default function Home() {
 
       <main>
         <FlexFrame>
-          <CreateGame />
+          <CreateGame onCreateGame={createGame} />
         </FlexFrame>
       </main>
     </div>
   );
+
+  function createGame({ gameName, gamePlayers }) {
+    setGameName(gameName);
+    console.log(gamePlayers);
+    setPlayers(gamePlayers.map((name) => ({ name, score: 0, id: nanoid() })));
+    console.log(players);
+  }
 }
 
 const FlexFrame = styled.div`
