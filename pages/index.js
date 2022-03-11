@@ -2,8 +2,10 @@ import Head from "next/head";
 import CreateGame from "../components/CreateGame";
 import Newgame from "./game";
 import styled from "styled-components";
+import { useState } from "react/cjs/react.production.min";
 
 export default function Home() {
+  const [players, setPlayers] = useState([]);
   return (
     <div>
       <Head>
@@ -14,17 +16,15 @@ export default function Home() {
 
       <main>
         <FlexFrame>
-        <CreateGame />
+          <CreateGame />
         </FlexFrame>
       </main>
     </div>
   );
 }
 
-const FlexFrame = styled.div `
-display:flex;
-flex-direction:column;
-align-items:center;
-
-`
-
+const FlexFrame = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
